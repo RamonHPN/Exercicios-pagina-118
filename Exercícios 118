@@ -1,0 +1,276 @@
+EXERCÍCIOS
+
+Um computador possui uma memória. principal com capacidade para armazenar palavras de 16 bits em cada uma de suas N células, e o seu barramento de endereços tem 12 bits de tamanho. Sabendo-se que em cada célula pode-se armazenar o Valor exato de uma palavra, quantos bytes poderão ser armazenados nessa memória?
+Resolução: Se o barramento de endreços tem 12 bits, então:
+
+def endereço(E):
+    N = 2 ** E
+    return N
+​
+e = int(input('Digite o tamanho do endereço: '))
+print(endereço(e))
+Digite o tamanho do endereço:  12
+4096
+Se o N = 4096 e M = 2 então:
+
+def total_Capacidade(N, M):
+    T = M * N
+    return T
+​
+n = int(input('Digite o numero de celulas: '))
+m = int(input('Digite o tamnho da celula: '))
+print(total_Capacidade(n, m),)
+​
+Digite o numero de celulas:  4096
+Digite o tamnho da celula:  2
+8192
+O que você entende por acesso à memória? Caracterize o tempo de acesso nos diversos tipo de memória.
+R = Quando acessamos a memória, estamos acessando a informação armazenada na memória do endereço.Já o tempo de acesso é o período de tempo decorridodesde o momento em que começou a operação de acesso, que é quando o endereço é colocado na barra de endereços, até que a informação que você quer tenha sido transferida.
+
+Quais são as possíveis operações que podem ser realizadas em uma memória?
+R = São basicamente leitura e escrita
+
+Qual é a diferença em termos de endereço, conteúdo e total de bits, entre as seguintes organizações de MP:
+a) memória A: 32K células de 8 bits cada;
+
+b) memória B: 16K células de 16 bit cada; e
+
+c) memória C: 16k células de 8 bits cada?
+
+R = Tem as memórias: A, B e C
+
+Para saber o endereço de cada memória usamos o número de células:
+
+A = 32768   B = 16384   C = 16384
+import math
+def bits_endereço(N):
+    E = math.log( N, 2)
+    return E
+​
+n = int(input('Digite o numero de celulas: '))
+print("A =",bits_endereço(n),"bits")
+​
+Digite o numero de celulas:  32768
+A = 15.0 bits
+n = int(input('Digite o numero de celulas: '))
+print("B =",bits_endereço(n),"bits")
+Digite o numero de celulas:  16384
+B = 14.0 bits
+n = int(input('Digite o numero de celulas: '))
+print("C =",bits_endereço(n),"bits")
+Digite o numero de celulas:  16384
+C = 14.0 bits
+O conteúdo de cada memória: A = 8 , B = 16 , C = 8
+
+Para saber o total de bits de cada memória usamos a formula T = N * M
+
+n = int(input('Digite o numero de celulas: '))
+m = int(input('Digite o tamnho da celula: '))
+print("A =",total_Capacidade(n, m),"bits")
+​
+Digite o numero de celulas:  32
+Digite o tamnho da celula:  8
+A = 256 bits
+n = int(input('Digite o numero de celulas: '))
+m = int(input('Digite o tamnho da celula: '))
+print("B =",total_Capacidade(n, m),"bits")
+Digite o numero de celulas:  16
+Digite o tamnho da celula:  16
+B = 256 bits
+n = int(input('Digite o numero de celulas: '))
+m = int(input('Digite o tamnho da celula: '))
+print("C =",total_Capacidade(n, m),"bits")
+Digite o numero de celulas:  16
+Digite o tamnho da celula:  8
+C = 128 bits
+Qual a função do registrador de endereços de memória (REM)? E do registrador de dados de memória (RDM)?
+R = REM: Armazenar temporariamente o endereço de acesso a uma posição de memória, ao se iniciar uma operação de leitura ou escrita.
+
+R = RDM: Armazenar temporariamente uma informação que esteja sendo transferida da memória principal para CPU, seja por meio da leitura ou escrita.
+
+Descreva os barramentos que interligam processador e MP, indicando função e direção do fluxo de sinais de cada um.
+R = Barramento de endereços: interliga CPU à MP, transferindo bits que significam um endereço. É unidirecional, ou seja, a informação trafega da CPU para MP.
+
+R = Barramento de dados: interliga CPU à MP, transferindo bits de informação. É bidirecional, isto é, os bits percorrem o barramento da CPU para MP, que é a operação de escrita, e no sentido inverso, a operação de leitura.
+
+R = Barramento de controle: interliga CPU à MP, para a passagem de sinais de controle, que são a leitura e escrita.
+
+8) Descreva passo a passo uma operação de leitura. Utilize um diagrama esquemático.
+​
+A memória envia uma cópia para a CPU de um dado, que na figura está no endereço 1011, ao chegar na UCP o dado novo substitui a
+o dado que já estava lá.
+​
+WhatsApp Image 2021-08-22 at 23.36.20.jpeg
+
+9) Faça o mesmo para uma operação de escrita.
+​
+A CPU envia um dado para o endereço da memória, na figura é o 1111, esse dado substitui a informação que estava lá anteriormente.
+WhatsApp Image 2021-08-22 at 23.36.20 (1).jpeg
+
+Um computador possui um RDM com 16 bits de tamanho e um REM com capacidade para armazenar números com 20 bits. sabe-se que a célula desse computador armazena dados com 8 bits de tamanho e que ele possui uma quantidade N de células,igual à capacidade máxima de armazenamento. Pergunta-se :
+a) Qual é o tamanho do barramento de endereço?
+
+R = Se o REM armazena 20 bits, então E = 20 bits
+
+b) Quantas células de memória são lidas em uma única operação de leitura?
+
+R = se uma Célula tem 8 bits e o RDM tem 16 bits, então 2 células.
+
+c) Quanto bits tem a memória principal?
+
+R = Se o endereço tem 20 bits, então:
+
+e = int(input('Digite o tamanho do endereço: '))
+print(endereço(e))
+​
+Digite o tamanho do endereço:  20
+1048576
+N = 1048576 bits = 1 MB
+
+R = Como o N = 1 MB e M = 8 bits, então: T = 8 MB
+
+Um microcomputador possui uma capacidade máxima de memória principal(RAM) com 32K célu­las, cada uma capaz de armazenar uma palavra de 8 bits. Pergunta-se :
+a) Qual é o maior endereço, em decimal, dessa memória?
+
+R = Se a capacidade máxima é 32 kbits = 32768 bits, então o numero de bits de endereço é:
+
+n = int(input('Digite o numero de celulas: '))
+print("X =",bits_endereço(n),"bits")
+Digite o numero de celulas:  32768
+X = 15.0 bits
+Se o endereço tem 15 bits, então o maior endereço é A-14
+
+b) Qual é o tamanho do barramento de endereços desse sistema?
+
+R = 15 bits
+
+e) Quantos bits podem ser armazenados no RDM e no REM?
+
+R = REM tem 15 bits e o RDM 8 bits, pois a palavra também tem 8 bits.
+
+d) Qual é o total máximo de bits que pode existir nesta memória?
+
+n = int(input('Digite o numero de celulas: '))
+m = int(input('Digite o tamnho da celula: '))
+print(total_Capacidade(n, m), " KB")
+Digite o numero de celulas:  32
+Digite o tamnho da celula:  8
+256  KB
+Considere uma célula de uma MP cujo endereço é, em hexadecimal, 2C81 e que tem armazenado em seu conteúdo um valor igual a, em hexadecimal, F5A. Sabe-se que nesse sistema as células têm o mesmo tamanho das palavras e que em cada acesso é lido o valor de uma célula. Pergunta-se:
+a) Qual deve ser o tamanho do REM e do RDM nesse sistema?
+
+R = REM = 2C81 = 0011 1011 1000 0001 = 16 bits; RDM = F5A = 1111 0101 1010 = 12 bits
+
+b) Qual deve ser a máxima quantidade de bits que podem ser implementados nessa memória?
+
+R = Para descobrir a quantidade maxima (T), precisamos do N e o M:
+
+e = int(input('Digite o tamanho do endereço: '))
+print(endereço(e), "bits")
+Digite o tamanho do endereço:  16
+65536 bits
+N = 64 KB e o M = 3 bits
+
+n = int(input('Digite o numero de celulas: '))
+m = int(input('Digite o tamnho da celula: '))
+print(total_Capacidade(n, m), " KB")
+Digite o numero de celulas:  64
+Digite o tamnho da celula:  8
+512  KB
+Considere uma memória com capacidade de armazenamento de 64K bytes; cada célula pode armazenar 1 byte de informação e cada caractere é codificado com 8 bits. Resolveu-se armazenar na memória deste sistema um conjunto de caracteres do seguinte modo. A partir do endereço (hexadecimal) 27FA, foram escritos sucessivamente grupos de 128 caracteres iguais, iniciando pelo grupo de As,seguido do grupo de Bs. e assim por diante. qual deverá ser o endereço correspondente ao local onde está armazenado o 1º J?
+R = Se cada letra equivale de A a J, então vamos ter 9 posiçoes. Depois vamos multiplicar 9 pelo gruo de 128 caracteres.
+
+9 * 128 = 1152. Por último, pegamos o valor decimal do número hexadecimal 27FA, que é 10234 e somamos com 1152.
+
+10234 + 1152 = 11384 em decimal e 2C74 em hexdecimal. A posição do 1° J é 2C74.
+
+O custo das memórias SRAM é maior que o das memórias DRAM. No entanto, o processo de conexão das memórias DRAM é mais complexo que o das SRAM e em consequência, o preço da interface das DRAM é bem maior que o da SRAM. Supondo que uma interface de DRAM custe RS 5,00, uma interface de SRAM custe RS 1,OO, o preço por bit de uma SRAM é de RS 0,00002 e o de uma DRAM é de RS 0,00001, calcule quantos bits deve ter uma memória dinâmica (DRM) para que o conjunto seja mais barato.
+DRAM = SRAM
+
+5,00 + 0,00001x = 1,00 + 0,00002x
+
+(0,00002 – 0,00001)x = 5,00 – 1,00
+
+0,00001x = 4,00
+
+x = 40.000 bits
+
+Compare uma memória principal e uma memória cache em termos de tempo de acesso, capacidade e temporariedade de armazenamento de dados.
+MP: maior tempo de acesso, maior capacidade, ambas tem temporariedade transitória exceto por algumas instruções presentes na MP.
+
+Cache: tempo de acesso menor que a MP, menor capacidade que a MP, maior custo e também é transitória.
+
+Considere um sistema constituído de um processador - memória cache - memória principal, no qual o tempo de acesso processador/memória cache é de 8 ns e o tempo de acesso memória cache/memória principal é de 70 ns. Observando-se um intervalo correspondente a 100 acessos consecutivos do processador e que a eficiência da memória cache de 96%. calcule o tempo médio de acesso do sistema
+x = 96 # Eficiência da memória
+y = 8  # tempo de acesso processador/memória cache é de 8 ns
+z = 78 # Soma do tempos de acesso da memória cache
+w = 4  
+a = (x * y) + (z * w)
+print(" o tempo total de acesso é ", a)
+print(" ")
+print(" o tempo médio de acesso do sistema = tempo total / quantidade de acessos")
+print("1080 / 100 = ", a/100)
+ o tempo total de acesso é  1080
+ 
+ o tempo médio de acesso do sistema = tempo total / quantidade de acessos
+1080 / 100 =  10.8
+Projete uma memória ROM de forma semelhante a que está mostrada na Fig. 4,18, considerando que ela possua 8 células de 4 bits cada uma. Podem ser assumidos quaisquer valores para armazenar nas 8 células.
+questão 266.PNG
+
+Quantos bits são requeridos para se endereçar células em uma memória de 128G?
+R = G é igual a 2^30 e 128?
+
+n = int(input('Digite o numero de celulas: '))
+print("x =",bits_endereço(n),"bits")
+Digite o numero de celulas:  128
+x = 7.0 bits
+então 2^7 * 2^30 = 37 bits
+
+E quantos bits seriam requeridos se a memória tivesse 32K?
+32K é igual a 32768 bits, então:
+
+n = int(input('Digite o numero de celulas: '))
+print("x =",bits_endereço(n),"bits")
+Digite o numero de celulas:  32768
+x = 15.0 bits
+Quantas posições de memória existem desde o endereço 0400(hexadecimal), inclusive, e o endereço 11FF (hexadecimal)?
+0400 hexa = 1024 decimal e 11FF hexa = 4607
+
+então há 3583 posições
+
+De que depende fundamentalmente a determinação da quantidade máxima de posições de memória que um processador consegue endereçar?
+R = Da quantidade de bits que um processador pode endereçar.
+
+Uma imagem pode ser representada por uma matriz de pontos armazenada na memória do computador. Cada ponto possui uma indicação da cor associada a ela. Essa cor precisa de 4 bytes para ser representada. Com Exercícios Memória Principal, Monteiro 9 base nessas informações, pede-se:
+a) A quantidade de memória, em bytes, necessária para armazenar uma imagem com 640 x 420 pontos;
+
+R = 640 * 420 = 268800 pontos * 4 = 1,03 Mb
+
+b) A quantidade de memória, em megabytes, necessária para armazenar 10 imagens semelhantes a esta;
+
+R = 1,03 * 10 = 10,25 Mb
+
+Quantos bytes podem ser armazenados em uma memória ROM que possua 16 linhas de endereçamento e que possua 4 linhas de saída de dados?
+E = 16 bits e M = 2 bits
+
+e = int(input('Digite o tamanho do endereço: '))
+print(endereço(e))
+Digite o tamanho do endereço:  6
+64
+N = 64 kB
+
+n = int(input('Digite o numero de celulas: '))
+m = int(input('Digite o tamnho da celula: '))
+print(total_Capacidade(n, m), " Kb")
+Digite o numero de celulas:  64
+Digite o tamnho da celula:  4
+256  Kb
+256 Kbits = 32 Kbytes
+
+Você considera válida a afirmação "um computador com mais poder de processamento pode armazenar mais programas?"
+R = Não está errado, mas mais poder de processamento significa maior capacidades de cálculos e execuções mais rápidas de programas e uma maior quantidade de memória armazena mais programas.
+
+Você considera válida a afirmação "vale aumentar a capacidade da memória principal para que o acesso aos meios magnéticos (discos rígidos e disquetes) seja mais rápido"?
+R = Essa afirmação é válida se os meios magnéticos possuírem uma alta taxa de transferência, assim a capacidade da MP faria com que mais dados dos discos fossem lidos em ciclo, aumentando o volume de transferências.
+
+
